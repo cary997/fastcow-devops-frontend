@@ -1,0 +1,170 @@
+Form:
+  format_error: 格式错误
+  required: 必填项
+TreeTip:
+  noempty: 节点不为空
+action:
+  verify: 验证
+  cancel: 取消
+  confirm: 确认
+  create: 创建
+  clear: 清空
+  create_at: 创建时间
+  delete: 删除
+  density: 密度
+  edit: 编辑
+  getJson: 查看JSON
+  more: 更多
+  pinned: 置顶
+  refresh: 刷新
+  reset: 重置
+  save: 保存
+  search: 搜索
+  submit: 提交
+  update: 更新
+  viewPlaintext: 查看明文
+  update_at: 更新时间
+baseTable:
+  columnSetting: 列设置
+  displayColumn: 显示列
+global:
+  accordion: 自动折叠
+  collapseall: 全部折叠
+  default: 默认
+  expandall: 全部展开
+  extlink_tooltip: 快捷链接
+  language_tooltip: 切换语言
+  search: 搜索
+  theme_dark: 黑暗
+  theme_light: 明亮
+  theme_tooltip: 切换主题
+  theme_useOS: 跟随系统
+  tabs_display: 标签页显示
+  tabs_hiding: 标签页隐藏
+headers:
+  changePwd: 修改密码
+  changePwdModal:
+    changePwdMsg: 密码修改完成
+    pwdErrorMsg: 长度8~16位，至少包含大写字母+小写字母+数字
+    pwdLabel: 密码
+    repwdErrorMsg: 两次输入密码不相符
+    repwdLabel: 确认密码
+  loginOut: 退出登录
+  loginOutMessage: 再会!
+  userProfile: 用户资料
+  loginOutPrompt: 确认退出登录？
+result:
+  goHome: 返回首页
+  goBack: 返回上一页
+  title:
+    err403: 403 禁止访问
+    err404: 404 资源不存在
+    err500: 500 服务器错误
+  description:
+    err403: 抱歉，您的权限不足
+    err404: 抱歉，您访问的页面不存在
+    err500: 抱歉，服务器出错，请联系管理员
+login:
+  ForgotPassword: 忘记密码?
+  MessageErrors: 错误
+  MessageSuccess: 登录成功
+  Rememberme: 记住我
+  account: 账户
+  accountplaceholder: 用户名或邮箱
+  login: 登录
+  logintitle: 账号登录
+  verifyCodeTip: 请输入6位验证码
+  password: 密码
+  passwprdplaceholder: 密码
+  totpRegister:
+    message: 管理员已开启两步认证请安装验证器并绑定动态令牌，以上是推荐的验证器，您可以选择安装其他验证器，若已安装请点击下一步完成绑定
+    message2: 请使用验证器扫描此二维码完成绑定，绑定完成后点击完成跳转至验证页面
+    next: 下一步
+    previous: 上一步
+    complete: 完成
+    step1: 安装验证器
+    step2: 绑定令牌
+    step3: 验证令牌
+menusPage:
+  createRoot: 新建根节点
+  createWarningMsg: 该类型菜单不能包含子菜单！
+  menuForm:
+    baseTitle: 基础配置
+    component: 组件
+    enTitle: 英文标题
+    enterTransition: 进场动画
+    frameLoading: 内嵌页面加载动画
+    frameSrc: 内嵌链接
+    hiddenTag: 隐藏标签页
+    icon: 图标
+    keepAlive: 路由缓存
+    leaveTransition: 离场动画
+    menuType: 菜单类型
+    metaTitle: 元数据配置
+    name: 唯一标识
+    path: 访问路径
+    rank: 排序
+    redirect: 重定向
+    showLink: 在菜单中显示
+    showParent: 显示父级菜单
+    zhTitle: 中文标题
+  menuOptions:
+    button: 按钮
+    directory: 目录
+    extLinks: 外链
+    page: 页面
+  menusDeleteMsg: 确定删除菜单?
+  pinnedInfoMsg: 已经是顶级菜单了！
+  pinnedWarningMsg: 该类型菜单不能置顶！
+rolesPage:
+  createRoles: 新建角色
+  rolesAccessPermission: 访问权限
+  rolesDeleteMsg: 确认删除角色？
+  rolesFormDesc: 描述
+  rolesFormName: 角色标识
+  rolesFormNickName: 显示名称
+  rolesFormStatus: 状态
+  rolesInfo: 角色信息
+status:
+  close_all: 关闭所有
+  close_other: 关闭其他
+  disable: 禁用
+  empty: 没有搜索结果!
+  enable: 启用
+  loading: 加载中
+  reload: 重新加载
+  userCont: 关联用户数
+title:
+  prompt: 提示信息
+  error: 错误信息
+  success: 成功信息
+  warning: 警告信息
+usersPage:
+  usersDeleteMsg: 确认删除用户？
+  usersRepwdMsg: 确认重置密码？
+  usersResetPwdSuccessMsg: 密码重置完成!
+  usersReTotpMsg: 确认重置TOTP？
+  usersResetTotpSuccessMsg: TOTP重置完成，重新登录生效!
+  tableTitle: 用户列表
+  modalTitle: 用户信息
+  button:
+    addUser: 新增用户
+    bulkDel: 批量删除
+    bulkEdit: 批量编辑
+    delUser: 删除用户
+    details: 详情
+    resetPassword: 重置密码
+    resetTotp: 重置Totp
+  tableData:
+    action: 操作
+    email: 邮箱
+    id: 用户ID
+    local: 本地
+    nickname: 显示名
+    password: 密码
+    phone: 手机
+    roles: 角色
+    selection: 选择列
+    status: 状态
+    type: 类型
+    username: 用户名

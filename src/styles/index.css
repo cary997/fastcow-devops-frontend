@@ -1,0 +1,28 @@
+/* html[data-theme="light"] {
+  --text-color: #000000;
+}
+
+html[data-theme="dark"] {
+  --text-color: #ffffff;
+} */
+
+/* firefox去除自动填充背景 */
+input {
+  filter: none !important;
+}
+/* chrome去除自动填充背景 */
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: var(--text-color) !important;
+  transition: background-color 99999s ease-in-out 0s !important;
+}
+
+
+.n-layout-scroll-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.n-scrollbar-content{
+  height: 100%;
+}

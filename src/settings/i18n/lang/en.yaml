@@ -1,0 +1,170 @@
+global:
+  theme_light: Light
+  theme_dark: Dark
+  theme_useOS: Use OS
+  theme_tooltip: Theme Mode
+  language_tooltip: Language Mode
+  extlink_tooltip: Quick Link
+  search: Search
+  expandall: Expand All
+  collapseall: Collapse All
+  accordion: Auto fold
+  default: default
+  tabs_display: Tabs Display
+  tabs_hiding: Tabs Hiding
+result:
+  goHome: Back to Home
+  goBack: Back to previous page
+  title:
+    err403: 403 Access denied
+    err404: 404 Resource does not exist
+    err500: 500 Server error
+  description: 
+    err403: Sorry, you don't have enough permissions.
+    err404: Sorry, the page you are trying to access does not exist!
+    err500: Sorry, there was a server error, please contact the administrator.
+login:
+  verifyCodeTip: Please enter a 6-digit verification code.
+  logintitle: Account sign-in
+  account: Account
+  accountplaceholder: Username or Email
+  password: Password
+  passwprdplaceholder: Password
+  login: Sign In
+  ForgotPassword: Forgot password?
+  Rememberme: Remember me
+  MessageSuccess: Login successful
+  MessageErrors: Error
+  totpRegister:
+    message: The administrator has enabled two-step authentication, please install the authenticator and bind the dynamic token, the above is the recommended authenticator, you can choose to install other authenticators, if you have already installed, please click on the next step to complete the bindings
+    message2: Please use the validator to scan this QR code to complete the binding, after the binding is completed, click Finish to jump to the verification page.
+    next: Next
+    previous: Previous
+    complete: Complete
+    step1: Install authenticator
+    step2: Bind Token
+    step3: Verify Token 
+headers:
+  userProfile: User Profile
+  changePwd: Change Password
+  loginOut: Sign Out
+  loginOutMessage: Good Bye!
+  loginOutPrompt: Confirm login out?
+  changePwdModal:
+    pwdLabel: Password
+    repwdLabel: Confirm Password
+    pwdErrorMsg: "Length 8~16 digits, at least include uppercase + lowercase + numbers"
+    repwdErrorMsg: "Two passwords do not match"
+    changePwdMsg: password change complete
+action:
+  verify: Verify
+  clear: Clear
+  confirm: Confirm
+  cancel: Cancel
+  submit: Submit
+  save: Save
+  delete: Delete
+  edit: Edit
+  create: Create
+  update: Update
+  search: Search
+  reset: Reset
+  refresh: Refresh
+  density: Density
+  pinned: Pinned
+  more: More
+  viewPlaintext: View Plaintext
+  getJson: Get JSON
+  create_at: Create Time
+  update_at: Update Time
+title:
+  prompt: Prompt Message
+  warning: Warning Message
+  error: Error Message
+  success: Success Message
+status:
+  loading: Loading
+  reload: Reload
+  close_other: Close Other
+  close_all: Close All
+  enable: Enable
+  disable: Disable
+  empty: No search results!
+Form:
+  required: required fields
+  format_error: format error
+TreeTip:
+  noempty: the node is not empty
+baseTable:
+  displayColumn: Display Column
+  columnSetting: Column Setting
+menusPage:
+  createRoot: New Root Node
+  menusDeleteMsg: Are you sure you want to delete a Menus?
+  createWarningMsg: This type of menu cannot contain submenus!
+  pinnedWarningMsg: This type of menu cannot be placed at the top!
+  pinnedInfoMsg: It's already the top menu!
+  menuForm:
+    baseTitle: Basic Config
+    menuType: Menu Type
+    path: Access Path
+    name: Unique Key
+    zhTitle: Chinese title
+    enTitle: English title
+    redirect: Redirect
+    component: Component
+    metaTitle: meta Config
+    icon: Icon
+    rank: Rank
+    frameSrc: Inline links
+    showLink: displayed in the menu
+    showParent: Displays the parent menu
+    frameLoading: Inline page loading animation
+    keepAlive: Route Cache
+    hiddenTag: Hides Tag Page
+    enterTransition: Enter Animation
+    leaveTransition: Leave Animation
+  menuOptions:
+    directory: directory
+    page: page
+    button: button
+    extLinks: external links
+rolesPage:
+  createRoles: New Roles
+  rolesInfo: Roles Info
+  rolesFormName: Role key
+  rolesFormNickName: Display name
+  rolesFormDesc: Describe
+  rolesFormStatus: Status
+  rolesDeleteMsg: Are you sure you want to delete a role?
+  rolesAccessPermission: Access Permission
+usersPage:
+  usersDeleteMsg: Are you sure to delete the user?
+  usersRepwdMsg: Are you sure to reset the password?
+  usersResetPwdSuccessMsg: Password reset complete!
+  usersReTotpMsg: Confirm TOTP reset?
+  usersResetTotpSuccessMsg: TOTP reset complete, re-login effective!
+  tableTitle: List of users
+  modalTitle: User information
+  button:
+    bulkEdit: Bulk Edit
+    bulkDel: Bulk Delete
+    addUser: Add User
+    details: details
+    delUser: Delete User
+    resetPassword: Reset password
+    resetTotp: Reset Totp
+  tableData:
+    selection: Selection Column
+    type: Type
+    status: Status
+    roles: Roles
+    id: User ID
+    username: User Name
+    nickname: Display Name
+    password: Password
+    email: Email
+    phone: Phone
+    local: Local
+    action: Action
+

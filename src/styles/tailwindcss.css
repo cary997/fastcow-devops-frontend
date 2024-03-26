@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .default-bg {
+    @apply rounded-md bg-gray-100 bg-opacity-60 dark:bg-darkbg;
+  }
+
+}

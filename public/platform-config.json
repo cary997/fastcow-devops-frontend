@@ -1,0 +1,14 @@
+{
+  "title": "FastCow",
+  "logintitle": "FastCow Devops",
+  "CachingAsyncRoutes": true,
+  "menuSetting": {
+    "minMenuWidth": 64,
+    "menuWidth": 200,
+    "mobileWidth": 800,
+    "collapsed": false,
+    "accordion": false
+  },
+  "secret_key": "TYK6tziA9azcb31d",
+  "secret_iv": "FD2fnb7ytFatHeem"
+}
