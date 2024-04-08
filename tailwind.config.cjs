@@ -40,6 +40,7 @@ module.exports = {
             colors: {
                 // brand colors
                 darkbg: "rgb(24, 24, 28)",
+                lightbg: "rgb(240,244,245)"
             },
             width: {
                 screen50: "50vw",
@@ -54,6 +55,7 @@ module.exports = {
                 "1/2": "50%",
                 "1/3": "33%",
                 "1/4": "25%",
+                "1/5": "20%",
             },
             minWidth: {
                 "1/2": "50%",
@@ -65,6 +67,7 @@ module.exports = {
                 "1/2": "50%",
                 "1/3": "33%",
                 "1/4": "25%",
+                "1/5": "20%",
             },
             height: {
                 screen10: "10vh",

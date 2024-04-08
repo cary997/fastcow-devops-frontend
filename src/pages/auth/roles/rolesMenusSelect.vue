@@ -31,8 +31,8 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue"
 import { NTree, NButton } from "naive-ui"
-import { initMenuList, menusList } from "@/hooks/auth/useMenusPageHook"
-import { showRolesModal, rolesData } from "@/hooks/auth/useRolesPageHook"
+import { initMenuList, menusList } from "@/hooks/useAuthHook"
+import { showRolesModal, rolesData } from "./rolesHandle"
 
 //控制树是否展开全部
 const expandall = ref(true as boolean)
@@ -47,3 +47,4 @@ onMounted(async () => {
     await initMenuList()
 })
 </script>
+@/pages/auth/roles/useRolesPageHook @/pages/auth/menus/useMenusPageHook

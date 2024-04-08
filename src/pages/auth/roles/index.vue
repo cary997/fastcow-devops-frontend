@@ -51,7 +51,7 @@ import usewebSiteStore from "@/store/modules/appWebSite"
 import { NDrawer, NButton, NIcon, NEmpty } from "naive-ui"
 import { MenuSharp } from "@vicons/ionicons5"
 import { onMounted, ref } from "vue"
-import { initRolesList, rolesListData } from "@/hooks/auth/useRolesPageHook"
+import { initRolesList, rolesListData } from "./rolesHandle"
 import { useI18n } from "vue-i18n"
 
 defineOptions({
@@ -69,3 +69,4 @@ onMounted(async () => {
     await initRolesList()
 })
 </script>
+@/pages/auth/roles/useRolesPageHook

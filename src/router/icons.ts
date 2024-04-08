@@ -1,4 +1,8 @@
-import { PersonAccounts24Filled, Settings24Filled } from "@vicons/fluent"
+import {
+    PersonAccounts24Filled,
+    Settings24Filled,
+    ClipboardTaskListLtr24Filled,
+} from "@vicons/fluent"
 import { Home } from "@vicons/ionicons5"
 import { renderIcon } from "@/utils/tools"
 
@@ -7,6 +11,7 @@ export const RouterIcon = {
     HomeIcon: Home,
     AuthIcon: PersonAccounts24Filled,
     SettingsIcon: Settings24Filled,
+    TasksIcon: ClipboardTaskListLtr24Filled,
 }
 
 export function IconSelect(name) {

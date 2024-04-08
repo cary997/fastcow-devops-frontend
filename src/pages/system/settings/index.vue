@@ -34,7 +34,7 @@
 
             <div class="flex-1 default-bg m:ml-2">
                 <div :class="isMobile ? null : 'p-10'">
-                    <n-card :title="title" embedded :bordered="false">
+                    <n-card :title="title" :bordered="false">
                         <template #header-extra>
                             <Auth value="system_settings_set">
                                 <NButton

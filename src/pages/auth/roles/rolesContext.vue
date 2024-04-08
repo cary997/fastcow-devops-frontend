@@ -3,7 +3,6 @@
         <n-spin :show="loadingRef">
             <n-card
                 :title="currentRolesData.nickname"
-                embedded
                 :bordered="false"
                 content-style="padding: 0;"
             >
@@ -117,7 +116,7 @@ import {
     rolesListData,
     loadingRef,
     rolesData,
-} from "@/hooks/auth/useRolesPageHook"
+} from "./rolesHandle"
 import { timestampFormat } from "@/utils/tools"
 import rolesMenusSelect from "./rolesMenusSelect.vue"
 import { clone } from "@pureadmin/utils"
@@ -172,3 +171,4 @@ const handleDelClick = () => {
     })
 }
 </script>
+@/pages/auth/roles/useRolesPageHook

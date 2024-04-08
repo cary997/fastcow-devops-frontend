@@ -28,7 +28,7 @@ export const ldapSyncApi = () => {
         "post",
         "/system/settings/syncldap",
         { timeout: 60000 },
-        { printError: false },
+        {  printError: false  },
     )
 }
 
@@ -38,6 +38,6 @@ export const ldapSyncResultApi = () => {
         "get",
         "/system/settings/syncldap_result",
         {},
-        { printError: false },
+        {  printError: false  },
     )
 }

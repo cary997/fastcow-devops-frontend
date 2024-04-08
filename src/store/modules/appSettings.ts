@@ -57,6 +57,7 @@ const useSettingsStore = defineStore({
         general: generalDefaultData,
         security: securityDefaultData,
         channels: channelsefaultData,
+        system_path: {}
     }),
     actions: {
         getSettings() {
@@ -77,6 +78,7 @@ const useSettingsStore = defineStore({
             this.ldap = data.ldap
             this.security = data.security
             this.channels = data.channels
+            this.system_path = data.system_path
         },
     },
 })

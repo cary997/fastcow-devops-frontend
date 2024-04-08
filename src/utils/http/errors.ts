@@ -26,7 +26,7 @@ export const getErrors = (error: HttpError) => {
                 resetRouter()
                 $message.warning($error.response?.data?.message, {
                     closable: true,
-                    duration: 0,
+                    duration: 10,
                 })
                 break
             case 403:

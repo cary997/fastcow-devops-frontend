@@ -65,6 +65,13 @@ export interface channelsInfo {
     /**邮件服务配置 */
     email?: emailSettingsInfo
 }
+/**系统文件路径设置 */
+export interface pathSettingsInfo { 
+    base_path?: string
+    tasks_templates_path?: string
+    upload_temp_path?: string
+    download_temp_path?: string
+}
 /**系统设置查询返回结果 */
 export interface settingsInfo {
     /**id创建时不用填写，此处用于后端返回时提示 */
@@ -81,6 +88,8 @@ export interface settingsInfo {
     security?: securityInfo
     /**通知渠道配置 */
     channels?: channelsInfo
+    /**系统文件路径设置 */
+    system_path?: pathSettingsInfo
 }
 
 export interface settingsResponse extends BaseResponse {

@@ -130,7 +130,7 @@ import {
     showRolesModal,
     setRolesHandle,
     rolesData,
-} from "@/hooks/auth/useRolesPageHook"
+} from "./rolesHandle"
 import { useI18n } from "vue-i18n"
 import { rolesFromRules } from "./extend"
 import { clone } from "@pureadmin/utils"
@@ -191,3 +191,4 @@ const handleCancelClick = () => {
 </script>
 
 <style scoped></style>
+@/pages/auth/roles/useRolesPageHook

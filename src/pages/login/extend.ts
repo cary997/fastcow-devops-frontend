@@ -4,6 +4,7 @@ import useUserStore from "@/store/modules/appLogin.js"
 import { router } from "@/router"
 import { FormInst } from "naive-ui"
 import { $t } from "@/settings/i18n"
+import { getUrlQuery } from "@/utils/tools"
 
 //根据此值显示不同的页面
 export const pageType = ref<number>(1)
@@ -69,6 +70,7 @@ export const onLogin = async () => {
                     } else {
                         router.replace({
                             path: toPath,
+                            query: getUrlQuery(toPath)
                         })
                     }
                     window.$message.success(() => $t("login.MessageSuccess"))

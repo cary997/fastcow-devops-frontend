@@ -139,6 +139,7 @@ title:
   error: 错误信息
   success: 成功信息
   warning: 警告信息
+  upload: 上传文件
 usersPage:
   usersDeleteMsg: 确认删除用户？
   usersRepwdMsg: 确认重置密码？

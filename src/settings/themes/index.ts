@@ -1,3 +1,11 @@
+/*
+ * @Author: Cray
+ * @Date: 2024-03-26 14:59:56
+ * @LastEditors: Cray
+ * @LastEditTime: 2024-03-29 09:38:21
+ * @FilePath: /src/settings/themes/index.ts
+ * @Descripttion: ~
+ */
 import type { GlobalThemeOverrides } from "naive-ui"
 export type breakpointsTuype = {
     xs: number

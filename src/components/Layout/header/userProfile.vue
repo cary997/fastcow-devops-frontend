@@ -140,7 +140,7 @@ import { useI18n } from "vue-i18n"
 
 import { ref } from "vue"
 import { isEmailPattenrn, isMobilePattern } from "@/utils/regularTools"
-import { setUsersHandle } from "@/hooks/auth/useUsersPageHook"
+import { setUsersHandle } from "@/hooks/useAuthHook"
 
 const { t } = useI18n()
 const inputValue = ref({
@@ -204,3 +204,4 @@ const handleSaveClick = () => {
     })
 }
 </script>
+@/pages/auth/users/useUsersPageHook

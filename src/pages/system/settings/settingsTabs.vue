@@ -2,7 +2,7 @@
     <div
         @click="handelClick('general')"
         :class="[
-            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100',
+            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100 dark:hover:bg-gray-400/10',
             clickStatus == 'general'
                 ? 'border-solid border-0 rounded-r-none border-r-4 border-info'
                 : null,
@@ -16,7 +16,7 @@
     <div
         @click="handelClick('security')"
         :class="[
-            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100',
+            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100 dark:hover:bg-gray-400/10',
             clickStatus == 'security'
                 ? 'border-solid border-0 rounded-r-none border-r-4 border-info'
                 : null,
@@ -30,7 +30,7 @@
     <div
         @click="handelClick('ldap')"
         :class="[
-            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100',
+            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100 dark:hover:bg-gray-400/10',
             clickStatus == 'ldap'
                 ? 'border-solid border-0 rounded-r-none border-r-4 border-info'
                 : null,
@@ -42,7 +42,7 @@
     <div
         @click="handelClick('channels')"
         :class="[
-            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100',
+            'flex-none flex flex-row justify-start items-center space-x-2 p-4 m-1 ml-0 default-bg hover:bg-base-300 active:bg-base-100 dark:hover:bg-gray-400/10',
             clickStatus == 'channels'
                 ? 'border-solid border-0 rounded-r-none border-r-4 border-info'
                 : null,

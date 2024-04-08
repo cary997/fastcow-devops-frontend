@@ -14,7 +14,6 @@ import { getToken, formatToken } from "@utils/storage/userLogin"
 import { simpleConfig } from "@/settings/config"
 import useUserStore from "@/store/modules/appLogin"
 import { getErrors } from "./errors"
-import { removePendingRequest, addPendingRequest } from "./repeatRequest"
 import NProgress from "@utils/progress"
 
 // 配置参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
@@ -65,12 +64,10 @@ class HttpRequest {
     private httpInterceptorsRequest(): void {
         HttpRequest.axiosInstance.interceptors.request.use(
             async (config: HttpRequestConfig): Promise<any> => {
-                // 检查是否存在重复请求，若存在则取消已发的请求
-                removePendingRequest(config)
-                // 把当前请求信息添加到pendingRequest对象中
-                addPendingRequest(config)
                 // 设置加载进度条(开始..)
-                NProgress.start()
+                if (config.showNProgress) {
+                    NProgress.start()
+                }
                 // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
                 if (typeof config.beforeRequestCallback === "function") {
                     config.beforeRequestCallback(config)
@@ -143,10 +140,10 @@ class HttpRequest {
         instance.interceptors.response.use(
             (response: HttpResponse) => {
                 const $config = response.config
-                // 从pendingRequest对象中移除请求
-                removePendingRequest($config)
                 // 设置加载进度条(结束..)
-                NProgress.done()
+                if ($config.showNProgress) {
+                    NProgress.done()
+                }
                 // 优先判断post/get等方法是否传入回掉，否则执行初始化设置等回掉
                 if (typeof $config.beforeResponseCallback === "function") {
                     $config.beforeResponseCallback(response)
@@ -162,14 +159,14 @@ class HttpRequest {
             (error: HttpError) => {
                 const $error = error
                 const $config = $error.config
-                // 从pendingRequest对象中移除请求
-                removePendingRequest($error.config)
                 // 打印错误信息
                 if (!("printError" in $config)) {
                     getErrors($error)
                 }
                 // 设置加载进度条(结束..)
-                NProgress.done()
+                if ($config.showNProgress) {
+                    NProgress.done()
+                }
                 //响应失败的返回
                 return Promise.reject($error)
             },
@@ -182,14 +179,12 @@ class HttpRequest {
         url: string,
         param?: AxiosRequestConfig,
         axiosConfig?: HttpRequestConfig,
-        printError?: object,
     ): Promise<T> {
         const config = {
             method,
             url,
             ...param,
             ...axiosConfig,
-            ...printError,
         } as HttpRequestConfig
 
         // 单独处理自定义请求/响应回掉

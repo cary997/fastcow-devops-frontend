@@ -147,7 +147,7 @@ import {
     qureyParams,
     queryUsersTablesHandle,
     bulkDelUsersHandle,
-} from "@/hooks/auth/useUsersPageHook"
+} from "./usersHandle"
 import {
     createColumns,
     currentUsersData,
@@ -172,8 +172,7 @@ import {
 } from "@vicons/fluent"
 import { onBeforeMount, ref } from "vue"
 import { useI18n } from "vue-i18n"
-import useSettingsStore from "@/store/modules/appSettings"
-import { initRolesList } from "@/hooks/auth/useRolesPageHook"
+import { getRolesList } from "@/hooks/useAuthHook"
 import { resetTotpApi } from "@/api/auth/UsersApi"
 
 const { t } = useI18n()
@@ -383,6 +382,7 @@ const handleBulkDelUsers = () => {
 onBeforeMount(async () => {
     await queryUsersTablesHandle(qureyParams.value)
     //初始化角色列表
-    await initRolesList()
+    await getRolesList()
 })
 </script>
+@/pages/auth/users/useUsersPageHook @/pages/auth/roles/useRolesPageHook

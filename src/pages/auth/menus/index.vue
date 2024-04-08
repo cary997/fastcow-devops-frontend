@@ -52,7 +52,7 @@ import {
     menusList,
     formDisabled,
     initMenuList,
-} from "@/hooks/auth/useMenusPageHook"
+} from "./menusHandle"
 import { useI18n } from "vue-i18n"
 
 defineOptions({
@@ -69,3 +69,4 @@ onMounted(async () => {
     await initMenuList()
 })
 </script>
+@/pages/auth/menus/useMenusPageHook

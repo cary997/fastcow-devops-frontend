@@ -1,7 +1,6 @@
 <template>
   <n-card
     :title="cardTitle"
-    embedded
     :bordered="false"
     :segmented="{
       content: true,
@@ -392,60 +391,62 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
 import {
   FormInst,
-  NForm,
-  NFormItemGi,
-  NInput,
-  NInputNumber,
+  NButton,
+  NCard,
+  NCheckbox,
+  NCode,
   NDescriptions,
   NDescriptionsItem,
-  NSelect,
-  NGrid,
   NDivider,
-  NCheckbox,
-  NButton,
   NDrawer,
   NDrawerContent,
-  NCode,
+  NForm,
+  NFormItemGi,
+  NGrid,
   NIcon,
-  NCard,
-} from "naive-ui";
-import { menuFormData, currentMenus, menuRules } from "./extend";
-import { useI18n } from "vue-i18n";
+  NInput,
+  NInputNumber,
+  NSelect,
+} from "naive-ui"
+import { storeToRefs } from "pinia"
+import { computed, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
+
+import useLanguageStore from "@/store/modules/appLanguage"
+import usewebSiteStore from "@/store/modules/appWebSite"
+import { delObjectProps, onCopy, timestampFormat } from "@/utils/tools"
+import { clone } from "@pureadmin/utils"
+import { Copy } from "@vicons/ionicons5"
+
+import { currentMenus, menuFormData, menuRules } from "./extend"
 import {
   addMenusHandle,
+  defaultKeys,
   formDisabled,
   menusList,
-  defaultKeys,
-  setMenusHandle,
   refreshMenusList,
   selectedKeys,
-} from "@/hooks/auth/useMenusPageHook";
-import { delObjectProps, onCopy, timestampFormat } from "@/utils/tools";
-import { clone } from "@pureadmin/utils";
-import { Copy } from "@vicons/ionicons5";
-import { storeToRefs } from "pinia";
-import useLanguageStore from "@/store/modules/appLanguage";
-import usewebSiteStore from "@/store/modules/appWebSite";
+  setMenusHandle,
+} from "./menusHandle"
 
-const { t } = useI18n();
-const { language } = storeToRefs(useLanguageStore());
-const { isMobile } = storeToRefs(usewebSiteStore());
+const { t } = useI18n()
+const { language } = storeToRefs(useLanguageStore())
+const { isMobile } = storeToRefs(usewebSiteStore())
 
 const cardTitle = computed(() => {
   return language.value === "en"
     ? menuFormData.value.meta.en_title
-    : menuFormData.value.meta.title;
-});
+    : menuFormData.value.meta.title
+})
 //用于validate验证结果
-const formRef = ref<FormInst | null>(null);
+const formRef = ref<FormInst | null>(null)
 //验证规则
-const rules = menuRules;
+const rules = menuRules
 
 //控制json数据显示
-const showJson = ref(false as boolean);
+const showJson = ref(false as boolean)
 
 // /** 菜单类型 1-目录 2-页面 3-按钮  4-外链*/
 const menuOptions = [
@@ -465,34 +466,34 @@ const menuOptions = [
     label: () => t("menusPage.menuOptions.extLinks"),
     value: 4,
   },
-];
+]
 
 //查看json
 const handleGetJSonClick = () => {
-  showJson.value = !showJson.value;
-};
+  showJson.value = !showJson.value
+}
 
 //编辑事件
 const handleEditClick = () => {
-  formDisabled.value = false;
-};
+  formDisabled.value = false
+}
 //提交事件
 const handleSubmitClick = () => {
-  formRef.value?.validate( (errors) => {
+  formRef.value?.validate(errors => {
     if (!errors) {
       //如果表单数据不包含ID则为新建，包含则为更新
       if (!menuFormData.value.id) {
-         addMenusHandle(menuFormData.value).then(async (res) => {
-          formDisabled.value = true;
+        addMenusHandle(menuFormData.value).then(async res => {
+          formDisabled.value = true
           //重新请求刷新菜单列表
-          await refreshMenusList();
+          await refreshMenusList()
           //内容显示为新创建的树节点
-          menuFormData.value = res;
+          menuFormData.value = res
           //提交后选中变为新创建的树节点
-          selectedKeys.value = [res.id];
-        });
+          selectedKeys.value = [res.id]
+        })
       } else {
-        let key = menuFormData.value.id;
+        let key = menuFormData.value.id
         let data = delObjectProps(menuFormData.value, [
           "id",
           "key",
@@ -501,35 +502,36 @@ const handleSubmitClick = () => {
           "children",
           "create_at",
           "update_at",
-        ]);
-         setMenusHandle(key, data).then(async (res) => {
-          formDisabled.value = true;
+        ])
+        setMenusHandle(key, data).then(async res => {
+          formDisabled.value = true
           //重新请求刷新菜单列表
-          await refreshMenusList();
+          await refreshMenusList()
           //内容显示为更新的树节点
-          menuFormData.value = res;
+          menuFormData.value = res
           //提交后选中变为更新的树节点
-          selectedKeys.value = [res.id];
-        });
+          selectedKeys.value = [res.id]
+        })
       }
     }
-  });
-};
+  })
+}
 //取消事件
 const handleCancelClick = () => {
-  formDisabled.value = true;
-  formRef.value?.restoreValidation();
+  formDisabled.value = true
+  formRef.value?.restoreValidation()
   if (currentMenus.value) {
-    menuFormData.value = clone(currentMenus.value, true);
-    selectedKeys.value = [menuFormData.value.id];
+    menuFormData.value = clone(currentMenus.value, true)
+    selectedKeys.value = [menuFormData.value.id]
   }
-};
+}
 
 //页面挂载完成初始化menuFormData和currentMenus的值
 onMounted(() => {
   if (menusList.value.length) {
-    currentMenus.value = menusList.value.find((v) => v.id == defaultKeys[0]);
-    menuFormData.value = clone(currentMenus.value, true);
+    currentMenus.value = menusList.value.find(v => v.id == defaultKeys[0])
+    menuFormData.value = clone(currentMenus.value, true)
   }
-});
+})
 </script>
+@/pages/auth/menus/useMenusPageHook

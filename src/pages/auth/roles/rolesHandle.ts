@@ -9,11 +9,11 @@ import {
     rolesCreateRequest,
     rolesCreateResult,
     rolesListBaseResult,
-    rolesListResult,
     setRolesResult,
 } from "@/api/auth/types"
+import { getRolesListHandle } from "@/hooks/useAuthHook"
 import { clone } from "@pureadmin/utils"
-import { ref, reactive } from "vue"
+import { ref } from "vue"
 
 //控制模态框显示
 export const showRolesModal = ref<boolean>(false)
@@ -22,19 +22,7 @@ export const showRolesModal = ref<boolean>(false)
 export const currentRolesData = ref<rolesListBaseResult>(null)
 
 //获取所有角色信息
-export async function getRolesListHandle() {
-    return new Promise<Array<rolesListBaseResult>>((resolve, reject) => {
-        getRolesListApi()
-            .then((res: rolesListResult) => {
-                if (res.code) {
-                    resolve(res.data.result)
-                }
-            })
-            .catch((error: Error) => {
-                reject(error)
-            })
-    })
-}
+export { getRolesListHandle }
 
 //创建角色
 export async function addRolesHandle(data: rolesCreateRequest) {
@@ -99,7 +87,7 @@ export const rolesDefaultModalData: rolesCreateRequest = {
 //表单绑定数据
 export const rolesData = ref<rolesCreateRequest>({ ...rolesDefaultModalData })
 
-// 初始化菜单列表
+// 初始化角色列表
 export async function initRolesList() {
     await getRolesListHandle()
         .then(res => {

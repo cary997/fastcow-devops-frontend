@@ -70,7 +70,7 @@
                         label-field="nickname"
                         value-field="id"
                         clearable
-                        :options="rolesListData"
+                        :options="rolesList"
                     />
                 </n-form-item-gi>
             </n-grid>
@@ -101,7 +101,7 @@ import {
     defaultQureyParams,
     queryUsersTablesHandle,
     qureyParams,
-} from "@/hooks/auth/useUsersPageHook"
+} from "./usersHandle"
 import {
     NForm,
     FormInst,
@@ -113,7 +113,7 @@ import {
     NIcon,
 } from "naive-ui"
 import { ref } from "vue"
-import { rolesListData } from "@/hooks/auth/useRolesPageHook"
+import { rolesList } from "@/hooks/useAuthHook"
 import { usersOptions, statusOptions } from "./extend"
 import { Search, Reset } from "@vicons/carbon"
 import { useI18n } from "vue-i18n"
@@ -145,3 +145,4 @@ const handleResetFitter = () => {
     qureyParams.value = { ...defaultQureyParams }
 }
 </script>
+@/pages/auth/users/useUsersPageHook @/pages/auth/roles/useRolesPageHook

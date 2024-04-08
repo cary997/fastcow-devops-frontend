@@ -74,7 +74,7 @@
                     v-model:value="usersData.roles"
                     label-field="nickname"
                     value-field="id"
-                    :options="rolesListData"
+                    :options="rolesList"
                 />
             </n-form-item-gi>
             <n-form-item-gi
@@ -131,7 +131,7 @@
             <div v-for="key in currentUsersData.roles">
                 <n-tag
                     :type="
-                        rolesListData.find(r => r.id === key).role_status
+                        rolesList.find(r => r.id === key).role_status
                             ? 'primary'
                             : 'error'
                     "
@@ -140,7 +140,7 @@
                     :bordered="false"
                     class="mr-1"
                 >
-                    {{ rolesListData.find(r => r.id == key).nickname }}
+                    {{ rolesList.find(r => r.id == key).nickname }}
                 </n-tag>
                 <br />
             </div>
@@ -174,12 +174,8 @@ import {
     NDescriptions,
     NDescriptionsItem,
 } from "naive-ui"
-import {
-    showUsersModal,
-    usersFormRef,
-    showUsersDrawer,
-} from "@/hooks/auth/useUsersPageHook"
-import { rolesListData } from "@/hooks/auth/useRolesPageHook"
+import { showUsersModal, usersFormRef, showUsersDrawer } from "./usersHandle"
+import { rolesList } from "@/hooks/useAuthHook"
 import useSettingsStore from "@/store/modules/appSettings"
 import { useI18n } from "vue-i18n"
 import { timestampFormat } from "@/utils/tools"
@@ -195,3 +191,4 @@ onMounted(() => {
     )
 })
 </script>
+@/pages/auth/users/useUsersPageHook @/pages/auth/roles/useRolesPageHook

@@ -95,7 +95,7 @@ import {
     delMenusHandle,
     refreshMenusList,
     setMenusHandle,
-} from "@/hooks/auth/useMenusPageHook"
+} from "./menusHandle"
 import { menuFormData, currentMenus, menuFormDefaultData } from "./extend"
 import { Search20Regular } from "@vicons/fluent"
 import { clone } from "@pureadmin/utils"
@@ -272,3 +272,4 @@ async function handleDrop({ node, dragNode }: TreeDropInfo) {
     })
 }
 </script>
+@/pages/auth/menus/useMenusPageHook

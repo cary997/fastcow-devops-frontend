@@ -19,7 +19,7 @@ import { useRoute } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useMenusStore } from "@/store/modules/appMenus"
 import { useTabsStoreHook } from "@/store/modules/appTabs"
-import { getMenusHook } from "@/hooks/useMenusHook"
+import { getMenusHook } from "@/hooks/useRoutersHook"
 import { getTagHook } from "@/hooks/useTagsHook"
 
 const props = defineProps<{

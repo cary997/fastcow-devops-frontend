@@ -88,3 +88,29 @@ export function removeObjectEmpty(obj) {
         }),
     )
 }
+/**获取url query参数 */
+export function getUrlQuery(url: string) {
+    // 通过 ? 分割获取后面的参数字符串
+    let urlStr = url.split("?")[1]
+    // 创建空对象存储参数
+    let obj = {}
+    if (!urlStr) return obj
+    // 再通过 & 将每一个参数单独分割出来
+    let paramsArr = urlStr.split("&")
+    for (let i = 0, len = paramsArr.length; i < len; i++) {
+        // 再通过 = 将每一个参数分割为 key:value 的形式
+        let arr = paramsArr[i].split("=")
+        obj[arr[0]] = arr[1]
+    }
+    return obj
+}
+
+//字节转KB、MB、GB、TB、PB
+export function bytesToSize(bytes) {
+    if (bytes === 0 || bytes == null) return "0 B"
+    var k = 1024, // or 1024
+        sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+        i = Math.floor(Math.log(bytes) / Math.log(k))
+
+    return (bytes / Math.pow(k, i)).toPrecision(3) + " " + sizes[i]
+}

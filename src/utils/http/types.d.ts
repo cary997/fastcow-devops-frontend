@@ -24,7 +24,10 @@ export interface HttpError extends AxiosError {
 }
 
 export interface HttpRequestConfig extends AxiosRequestConfig {
-    printError?: boolean
     beforeRequestCallback?: (request: HttpRequestConfig) => void
     beforeResponseCallback?: (response: HttpResponse) => void
+    /**是否使用message输出请求错误信息 */
+    printError?: boolean
+    /**是否显示进度条 */
+    showNProgress?: boolean
 }

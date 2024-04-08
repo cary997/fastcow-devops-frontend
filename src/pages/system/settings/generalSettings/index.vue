@@ -17,7 +17,8 @@
                             type="password"
                         >
                         </n-input>
-                        <show-password v-if="data.user_default_password"
+                        <show-password
+                            v-if="data.user_default_password"
                             :value="data.user_default_password"
                         ></show-password>
                     </span>
@@ -35,7 +36,7 @@
                             v-model:value="data.user_default_roles"
                             label-field="nickname"
                             value-field="id"
-                            :options="rolesListData"
+                            :options="rolesList"
                         />
                     </span>
                     <NText depth="3" class="text-sm">
@@ -82,8 +83,7 @@ import {
     NText,
     NSelect,
 } from "naive-ui"
-import { rolesListData } from "@/hooks/auth/useRolesPageHook"
-import { initRolesList } from "@/hooks/auth/useRolesPageHook"
+import { getRolesList,rolesList} from "@/hooks/useAuthHook"
 import { useI18n } from "vue-i18n"
 const { t } = useI18n()
 //双向绑定
@@ -135,6 +135,6 @@ const rules: FormRules = {
 }
 onMounted(async () => {
     //初始化角色列表
-    await initRolesList()
+    await getRolesList()
 })
 </script>

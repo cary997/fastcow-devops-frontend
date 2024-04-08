@@ -1,6 +1,6 @@
 <template>
     <div class="flex-1 default-bg">
-        <n-card embedded size="small" :bordered="false">
+        <n-card size="small" :bordered="false">
             <n-descriptions
                 title="平台信息"
                 label-placement="left"

@@ -4,7 +4,6 @@
 
 @layer components {
   .default-bg {
-    @apply rounded-md bg-gray-100 bg-opacity-60 dark:bg-darkbg;
+    @apply rounded-md border-0 border-t border-solid border-gray-500/20 shadow-sm shadow-gray-500/40  dark:border-gray-500/10  dark:bg-darkbg dark:shadow-none;
   }
-
 }

@@ -4,8 +4,6 @@ import {
     bulkSetUsersApi,
     delUsersApi,
     queryUsersApi,
-    setUsersApi,
-    setUsersPasswordApi,
 } from "@/api/auth/UsersApi"
 import {
     UserCreateRequest,
@@ -18,10 +16,8 @@ import {
     deleteResult,
     queryUsersResponse,
     queryUsersResult,
-    setUserPasswordRequest,
-    setUsersRequest,
-    setUsersResponse,
 } from "@/api/auth/types"
+import { setUsersHandle,setUsersPasswordHandle } from "@/hooks/useAuthHook"
 import { removeObjectEmpty } from "@/utils/tools"
 import { FormInst } from "naive-ui"
 import { reactive, ref } from "vue"
@@ -65,20 +61,8 @@ export async function addUsersHandle(data: UserCreateRequest) {
     })
 }
 /** 更新用户*/
-export async function setUsersHandle(user_id: number, data: setUsersRequest) {
-    return new Promise<UserCreateRequest>((resolve, reject) => {
-        setUsersApi(user_id, data)
-            .then((res: setUsersResponse) => {
-                if (res.code) {
-                    window.$message.success(res.message)
-                    resolve(res.data)
-                }
-            })
-            .catch((error: Error) => {
-                reject(error)
-            })
-    })
-}
+export { setUsersHandle }
+
 /**删除用户 */
 export async function delUsersHandle(user_id: number) {
     return new Promise<any>((resolve, reject) => {
@@ -96,19 +80,7 @@ export async function delUsersHandle(user_id: number) {
 }
 
 /**修改用户密码 */
-export async function setUsersPasswordHandle(data: setUserPasswordRequest) {
-    return new Promise<any>((resolve, reject) => {
-        setUsersPasswordApi(data)
-            .then((res: deleteResult) => {
-                if (res.code) {
-                    resolve(res.data)
-                }
-            })
-            .catch((error: Error) => {
-                reject(error)
-            })
-    })
-}
+export {setUsersPasswordHandle}
 
 /**批量更新用户 */
 export async function bulkSetUsersHandle(data: bulkSetUsersRequest) {

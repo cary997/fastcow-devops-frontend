@@ -79,7 +79,7 @@ import {
 import { ref, reactive } from "vue"
 import { useI18n } from "vue-i18n"
 import { currentUser, showPasswordModal } from "."
-import { setUsersPasswordHandle } from "@/hooks/auth/useUsersPageHook"
+import { setUsersPasswordHandle } from "@/hooks/useAuthHook"
 import { passwordPattern } from "@/utils/regularTools"
 
 const { t } = useI18n()
@@ -145,3 +145,4 @@ const handleCancelClick = () => {
     formValue.repassword = null
 }
 </script>
+@/pages/auth/users/useUsersPageHook

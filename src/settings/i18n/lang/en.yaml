@@ -82,6 +82,7 @@ title:
   warning: Warning Message
   error: Error Message
   success: Success Message
+  upload: Upload Files
 status:
   loading: Loading
   reload: Reload
