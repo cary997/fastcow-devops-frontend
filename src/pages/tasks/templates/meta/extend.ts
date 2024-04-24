@@ -1,17 +1,15 @@
 import { ref } from "vue"
 
-import { readFileApi, writeFileApi } from "@/api/files/filesApi"
-import { readFile, readFileResponse, writeFile } from "@/api/files/types"
-import {
-  getTasksTemplateApi,
-  setTasksTemplateFilesApi,
-} from "@/api/tasks/templatesApi"
 import {
   getTaskTemplateResponse,
   TaskTemplatesWithFiles,
   TemplateFiles,
   UpdateTaskTemplateFiles,
-} from "@/api/tasks/types"
+} from "@/api/tasks/templates"
+import {
+  getTasksTemplateApi,
+  setTasksTemplateFilesApi,
+} from "@/api/tasks/templatesApi"
 import { renderIcon } from "@/utils/tools"
 import { DocumentText, FolderOpen } from "@vicons/ionicons5"
 import { SpaceDashboardFilled } from "@vicons/material"
@@ -41,7 +39,10 @@ export function getFilesTreeHandle(filesList: Array<TemplateFiles>) {
           : item.type == 2
             ? folderIcon
             : documentIcon,
-      isedit: item.name === "new_file" || item.name === "new_directory" ? true : false,
+      isedit:
+        item.name === "new_file" || item.name === "new_directory"
+          ? true
+          : false,
     }
     if (item.children && item.children.length > 0) {
       // Recursion
@@ -110,34 +111,4 @@ export function getFilesPathList(data: TemplateFiles[]) {
     }
   })
   return pathList
-}
-
-/**读取文件 */
-export async function readTasksFileHandle(data: readFile) {
-  return new Promise<{ code: string; lang: string }>((resolve, reject) => {
-    readFileApi(data)
-      .then((res: readFileResponse) => {
-        if (res.code) {
-          resolve(res.data)
-        }
-      })
-      .catch((error: Error) => {
-        reject(error)
-      })
-  })
-}
-
-/**写入文件 */
-export async function writeTasksFileHandle(data: writeFile) {
-  return new Promise<{ code: string; lang: string }>((resolve, reject) => {
-    writeFileApi(data)
-      .then((res: readFileResponse) => {
-        if (res.code) {
-          resolve(res.data)
-        }
-      })
-      .catch((error: Error) => {
-        reject(error)
-      })
-  })
 }

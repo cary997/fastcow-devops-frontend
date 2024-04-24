@@ -30,4 +30,6 @@ export interface HttpRequestConfig extends AxiosRequestConfig {
     printError?: boolean
     /**是否显示进度条 */
     showNProgress?: boolean
+    /**默认返回response.data 添加此字段返回完整response */
+    returnFull?: boolean
 }

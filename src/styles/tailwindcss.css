@@ -6,4 +6,7 @@
   .default-bg {
     @apply rounded-md border-0 border-t border-solid border-gray-500/20 shadow-sm shadow-gray-500/40  dark:border-gray-500/10  dark:bg-darkbg dark:shadow-none;
   }
+  .default-stdout-bg {
+    @apply rounded-md border border-solid border-gray-500/20 dark:border-gray-500/10  dark:bg-darkstdoutbg;
+  }
 }

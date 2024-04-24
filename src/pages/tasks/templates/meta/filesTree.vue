@@ -34,6 +34,12 @@
         </div>
       </template>
       <template #header-extra>
+        <n-button text type="primary" @click="handleDownload" class="mr-4">
+          <template #icon>
+            <n-icon :component="Download" />
+          </template>
+          下载
+        </n-button>
         <n-button text type="primary" @click="backClickHandle">
           <template #icon>
             <n-icon :component="ArrowBackUp" />
@@ -118,13 +124,14 @@ import { computed, h, nextTick, onMounted, ref, toRaw, unref } from "vue"
 import { useI18n } from "vue-i18n"
 import { useRoute, useRouter } from "vue-router"
 
-import { UpdateTaskTemplateFiles } from "@/api/tasks/types"
+import { UpdateTaskTemplateFiles } from "@/api/tasks/templates"
 import { UploadFileInfoCustom } from "@/components/Files/type"
 import uploadFiles from "@/components/Files/uploadFiles.vue"
+import { downloadFileHandle } from "@/hooks/useFilesHook"
 import useSettingsStore from "@/store/modules/appSettings"
 import { renderIcon, timestampFormat } from "@/utils/tools"
 import { CreateFilled, DeleteSweepFilled, InfoRound } from "@vicons/material"
-import { ArrowBackUp } from "@vicons/tabler"
+import { ArrowBackUp, Download } from "@vicons/tabler"
 
 import {
   filePath,
@@ -371,6 +378,28 @@ const onFinishUpload = async (file: UploadFileInfoCustom) => {
     })
   }
 }
+
+const handleDownload = () => {
+  const params = {
+    file_path: `${templatePath.value}/${templateMetaData.value.id}`,
+  }
+  downloadFileHandle(params).then(res => {
+    if (!res.file) return
+    //获取文件名
+    const fileName = res.fileName
+    // blob
+    const blob = new Blob([res.file], { type: res.fileType })
+
+    const link = document.createElement("a")
+    const href = window.URL.createObjectURL(blob) //下载链接
+    link.href = href
+    link.download = fileName //下载后文件名
+    document.body.appendChild(link)
+    link.click() //点击下载
+    document.body.removeChild(link) //下载完成移除元素
+    window.URL.revokeObjectURL(href) //释放blob对象
+  })
+}
 onMounted(async () => {
   await getTasksTemplateHandle(currentRoute.query.id as string).then(res => {
     templateMetaData.value = res
@@ -382,3 +411,4 @@ onMounted(async () => {
   })
 })
 </script>
+@/api/tasks/templates

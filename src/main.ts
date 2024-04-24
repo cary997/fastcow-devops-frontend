@@ -1,7 +1,3 @@
-// 等宽字体
-import "vfonts/FiraCode.css"
-// 通用字体
-import "vfonts/Lato.css"
 import { createApp } from "vue"
 import VueCodemirror from "vue-codemirror"
 
@@ -10,6 +6,7 @@ import {
   Auth,
   GlobalCodeInput,
   GlobalShowPassword,
+  GlobalStat,
   GlobalTextAvatar,
   GlobalTooltip,
 } from "@components/Global"
@@ -22,17 +19,20 @@ import "@/styles/index.css"
 import "@/styles/tailwindcss.css"
 
 import { getPlatformConfig } from "./settings/config"
+
 const app = createApp(App)
 
-app.component("Auth", Auth)
-app.component("tip", GlobalTooltip)
-app.component("codeInput", GlobalCodeInput)
-app.component("showPassword", GlobalShowPassword)
-app.component("textAvatar", GlobalTextAvatar)
-app.use(VueCodemirror, {
-  extensions: [],
-})
 getPlatformConfig(app).then(async () => {
+  app.component("Auth", Auth)
+  app.component("tip", GlobalTooltip)
+  app.component("codeInput", GlobalCodeInput)
+  app.component("showPassword", GlobalShowPassword)
+  app.component("textAvatar", GlobalTextAvatar)
+  app.component("stat", GlobalStat)
+
+  app.use(VueCodemirror, {
+    extensions: [],
+  })
   // 挂载路由
   setupRouter(app)
   // 等待路由准备就绪

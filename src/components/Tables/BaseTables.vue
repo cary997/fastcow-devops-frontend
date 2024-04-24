@@ -1,15 +1,18 @@
 <template>
     <div class="flex flex-col">
-        <div id="tableFitter" class="flex-none default-bg p-2 mb-2">
+        <div id="tableFitter" v-if="showFitter" class="flex-none">
             <slot name="tableFitter"></slot>
         </div>
-        <div class="flex flex-1 flex-col p-2 default-bg">
+        <div class="flex flex-1 flex-col">
             <div
                 id="tableHeaderAction"
                 class="flex flex-none flex-row items-center space-x-4"
             >
-                <div class="flex-none">
-                    <h2>{{ tableTitle }}</h2>
+                <div class="flex flex-none justify-start items-center">
+                    <span>
+                        <h2>{{ tableTitle }}</h2>
+                    </span>
+                    <slot name="tableHeader"></slot>
                 </div>
                 <div class="flex flex-1 justify-end space-x-3 items-center">
                     <slot name="tableHeaderAction"></slot>
@@ -44,7 +47,7 @@
                     <columnsSettings v-model:columns="tableColumns" />
                 </div>
             </div>
-            <div class="flex flex-1 flex-row">
+            <div class="flex flex-auto">
                 <n-data-table
                     v-bind="getBindValues"
                     :size="tableResize"

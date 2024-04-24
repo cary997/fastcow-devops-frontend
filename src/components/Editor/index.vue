@@ -33,9 +33,9 @@
     <div class="flex-1">
       <n-spin :show="loading">
         <codemirror
+          ref="editorRef"
           v-model="code"
           :extensions="extensions"
-          :disabled="disabled"
           :tab-size="tabSize"
           :autofocus="autofocus"
           :indent-with-tab="true"
@@ -73,24 +73,17 @@ import { computed, onMounted, reactive, ref, shallowRef } from "vue"
 import { Codemirror } from "vue-codemirror"
 
 import { getThemeName } from "@/utils/storage/Theme"
-import { autocompletion } from "@codemirror/autocomplete"
 import { json } from "@codemirror/lang-json"
 import { markdown } from "@codemirror/lang-markdown"
 import { python } from "@codemirror/lang-python"
 import { sql } from "@codemirror/lang-sql"
 import { yaml } from "@codemirror/lang-yaml"
-import { foldGutter, StreamLanguage } from "@codemirror/language"
+import { StreamLanguage } from "@codemirror/language"
 import { jinja2 } from "@codemirror/legacy-modes/mode/jinja2"
 import { shell } from "@codemirror/legacy-modes/mode/shell"
-import { highlightSelectionMatches } from "@codemirror/search"
 import { oneDark } from "@codemirror/theme-one-dark"
-import {
-  crosshairCursor,
-  EditorView,
-  lineNumbers,
-  rectangularSelection,
-  ViewUpdate,
-} from "@codemirror/view"
+import { EditorView, lineNumbers, ViewUpdate } from "@codemirror/view"
+import {  EditorState} from "@codemirror/state"
 
 import { props } from "./baseProps"
 import { basicSetup } from "./basicSetup"
@@ -98,6 +91,7 @@ import { basicSetup } from "./basicSetup"
 defineProps({
   ...props,
 })
+const editorRef = ref(null)
 const emits = defineEmits(["update:code", "ready", "change", "focus", "blur"])
 const code = defineModel("code", {
   type: String,
@@ -160,6 +154,8 @@ const extensions = computed(() => {
   const extension = [getLanguage(), getTheme(), basicSetup]
   if (!disabled.value) {
     extension.push(lineNumbers())
+  } else {
+    extension.push(EditorState.readOnly.of(true))
   }
   return extension
 })
@@ -259,3 +255,5 @@ onMounted(() => {
   getCodeTheme()
 })
 </script>
+
+<style lang="scss"></style>

@@ -78,7 +78,7 @@ const basicSetup = /*@__PURE__*/ (() => [
   highlightSpecialChars(),
   history(),
   foldGutter(),
-  drawSelection(),
+  // drawSelection({cursorBlinkRate: 1000}),
   dropCursor(),
   EditorState.allowMultipleSelections.of(true),
   indentOnInput(),

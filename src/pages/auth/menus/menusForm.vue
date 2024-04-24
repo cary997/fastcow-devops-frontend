@@ -370,14 +370,14 @@
   </n-card>
   <n-drawer
     v-model:show="showJson"
-    :default-width="400"
+    :default-width="450"
     resizable
     placement="right"
   >
     <n-drawer-content closable>
       <template #header>
         {{ menuFormData.name }}
-        <n-button text size="tiny" @click="onCopy(menuFormData)">
+        <n-button text size="tiny" @click="onCopy(JSON.stringify(menuFormData, null, 2))">
           <template #icon>
             <n-icon class="text-primary">
               <Copy />

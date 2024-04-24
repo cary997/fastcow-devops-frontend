@@ -214,7 +214,7 @@ export const createColumns = ({
       align: "left",
       minWidth: 50,
       ellipsis: {
-        tooltip: true,
+        tooltip: true
       },
       resizable: true,
       render(row) {

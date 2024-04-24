@@ -44,7 +44,7 @@ export const getErrors = (error: HttpError) => {
                 }
                 break
             case 422:
-                $message.error("请求参数错误")
+                $message.error($error.response?.data?.message)
                 break
             case 500:
                 $message.error("服务器错误,请联系管理员!")

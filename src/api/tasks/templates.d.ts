@@ -77,7 +77,8 @@ export interface getTaskTemplateResponse extends BaseResponse {
  */
 export interface tasksTemplateQueryParams {
   name?: string
-  taskType?: string
+  task_type?: string
+  is_all?: boolean
   limit?: number
   page?: number
 }

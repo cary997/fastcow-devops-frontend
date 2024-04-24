@@ -190,3 +190,13 @@ onMounted(async () => {
     window.addEventListener("resize", checkMobileMode)
 })
 </script>
+<style lang="less">
+.n-layout-scroll-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.n-scrollbar-content{
+  height: 100%;
+}
+</style>

@@ -58,3 +58,15 @@ export const writeFileApi = (data: writeFile) => {
     data,
   })
 }
+
+//下载文件
+export const downloadFileApi = (params: { file_path: string }) => {
+  return http.request<any>(
+    "get",
+    "/files/downloads/",
+    {
+      params,
+    },
+    { returnFull: true, responseType: "blob" },
+  )
+}

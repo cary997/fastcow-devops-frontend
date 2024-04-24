@@ -17,6 +17,8 @@ module.exports = {
                     success: "#61bc84",
                     warning: "#ebc75e",
                     error: "#dd5454",
+                    lightinfo: "#4889be",
+                    darkinfo: "#988cc9"
                 },
             },
             {
@@ -26,7 +28,9 @@ module.exports = {
                     info: "#4889be",
                     success: "#13b17a",
                     warning: "#e6b731",
-                    error: "#f33966",
+                    error: "#ce3056",
+                    lightinfo: "#4889be",
+                    darkinfo: "#988cc9"
                 },
             },
         ],
@@ -40,7 +44,10 @@ module.exports = {
             colors: {
                 // brand colors
                 darkbg: "rgb(24, 24, 28)",
-                lightbg: "rgb(240,244,245)"
+                lightbg: "rgb(240,244,245)",
+                darkstdoutbg: "rgb(40,44,52)",
+                lightinfo: "#4889be",
+                darkinfo: "#988cc9"
             },
             width: {
                 screen50: "50vw",

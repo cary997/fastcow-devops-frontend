@@ -165,5 +165,5 @@ declare global {
     /**
      *  @description 表格完整列配置
      */
-    interface BaseTableColumns<T = InternalRowData> extends TableColumns<T> {}
+    interface BaseTableColumns<T = InternalRowData> extends TableColumns<T> { }
 }

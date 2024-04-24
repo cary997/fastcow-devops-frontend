@@ -18,11 +18,11 @@ input:-internal-autofill-selected {
 }
 
 
-.n-layout-scroll-container {
+/* .n-layout-scroll-container {
   display: flex;
   flex-direction: column;
 }
 
 .n-scrollbar-content{
   height: 100%;
-}
+} */
