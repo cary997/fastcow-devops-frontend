@@ -187,25 +187,10 @@ const tableColumns = ref(
     getTaskDetail(rowData) {
       router.push({
         name: "tasks_execution_details",
-        query: { id: rowData.id },
+        query: { tid: rowData.task_id },
       })
     },
     retryTask(rowData) {
-      window.$dialog.warning({
-        title: t("title.warning"),
-        content: `重试任务不支持取消，并且任务（${rowData.task_name}) 执行记录在执行后将被重置`,
-        positiveText: t("action.confirm"),
-        negativeText: t("action.cancel"),
-        onPositiveClick: () => {
-          const config = historyToConfig(rowData)
-          showTabPane.value = config.task_type
-          taskConfig.value = { ...config }
-          otherPaneDisable.value = true
-          showModal.value = true
-        },
-      })
-    },
-    createTask(rowData) {
       const config = historyToConfig(rowData)
       config.ident = null
       showTabPane.value = config.task_type
@@ -305,7 +290,7 @@ const handleExec = () => {
         showModal.value = false
         router.push({
           name: "tasks_execution_details",
-          query: { id: res.id },
+          query: { tid: res.task_id },
         })
       })
     }

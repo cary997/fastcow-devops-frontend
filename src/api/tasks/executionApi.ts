@@ -38,7 +38,7 @@ export const delTasksHistoryApi = (data: { id_list: Array<number> }) => {
 }
 
 /** 查询任务模版 */
-export const getTasksHistoryApi = (tid: number) => {
+export const getTasksHistoryApi = (tid: string) => {
   return http.request<getTasksHistoryResponse>(
     "get",
     `/tasks/execution/get/${tid}`,

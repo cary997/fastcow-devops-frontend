@@ -9,4 +9,10 @@
   .default-stdout-bg {
     @apply rounded-md border border-solid border-gray-500/20 dark:border-gray-500/10  dark:bg-darkstdoutbg;
   }
+  .div-select {
+    @apply pb-4 pt-4 hover:bg-primary/30 active:bg-primary/50
+  }
+  .div-checked {
+    @apply border-solid border-0 border-r-4 border-primary bg-primary/10 text-primary
+  }
 }

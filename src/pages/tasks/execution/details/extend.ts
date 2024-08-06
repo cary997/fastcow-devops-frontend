@@ -7,7 +7,7 @@ import {
 import { getTasksHistoryApi, readTaskStdoutApi } from "@/api/tasks/executionApi"
 
 /**查询任务记录**/
-export async function getTasksHistoryHandle(tid: number) {
+export async function getTasksHistoryHandle(tid: string) {
   return new Promise<TasksHistory>((resolve, reject) => {
     getTasksHistoryApi(tid)
       .then((res: getTasksHistoryResponse) => {

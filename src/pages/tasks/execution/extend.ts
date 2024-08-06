@@ -26,7 +26,7 @@ import {
   CommentError20Filled,
   PauseOff16Filled,
 } from "@vicons/fluent"
-import { Copy, CreateOutline } from "@vicons/ionicons5"
+import { Copy } from "@vicons/ionicons5"
 
 import { getTaskTypeBadgeClass } from "../templates/extend"
 
@@ -164,15 +164,13 @@ export const paginationReactive = reactive({
 
 export const createColumns = ({
   getTaskDetail,
-  retryTask,
   getTemplate,
-  createTask,
+  retryTask,
   revokeTask,
 }: {
   getTaskDetail: (rowData: TasksHistory) => void
-  retryTask: (rowData: TasksHistory) => void
   getTemplate: (rowData: TasksHistory) => void
-  createTask: (rowData: TasksHistory) => void
+  retryTask: (rowData: TasksHistory) => void
   revokeTask: (rowData: TasksHistory) => void
 }): BaseTableColumns<TasksHistory> => {
   return [
@@ -355,44 +353,24 @@ export const createColumns = ({
                 default: () => "详情",
               },
             ),
-            !["running", "starting"].includes(row.task_status)
-              ? [
-                  h(
-                    NButton,
-                    {
-                      size: "tiny",
-                      onClick: () => {
-                        createTask(row)
-                      },
+            !["pending", "running", "starting"].includes(row.task_status)
+              ? h(
+                  NButton,
+                  {
+                    size: "tiny",
+                    onClick: () => {
+                      retryTask(row)
                     },
-                    {
-                      icon: () =>
-                        h(NIcon, {
-                          component: CreateOutline,
-                          class: "text-secondary",
-                        }),
-                      default: () => "新建",
-                    },
-                  ),
-
-                  h(
-                    NButton,
-                    {
-                      size: "tiny",
-                      onClick: () => {
-                        retryTask(row)
-                      },
-                    },
-                    {
-                      icon: () =>
-                        h(NIcon, {
-                          component: RetryFailed,
-                          class: "text-secondary",
-                        }),
-                      default: () => "重试",
-                    },
-                  ),
-                ]
+                  },
+                  {
+                    icon: () =>
+                      h(NIcon, {
+                        component: RetryFailed,
+                        class: "text-secondary",
+                      }),
+                    default: () => "重试",
+                  },
+                )
               : h(
                   NButton,
                   {

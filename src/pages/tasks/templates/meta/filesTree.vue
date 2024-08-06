@@ -34,7 +34,7 @@
         </div>
       </template>
       <template #header-extra>
-        <n-button text type="primary" @click="handleDownload" class="mr-4">
+        <n-button text type="primary" :loading="downloadLoding" @click="handleDownload" class="mr-4">
           <template #icon>
             <n-icon :component="Download" />
           </template>
@@ -379,7 +379,10 @@ const onFinishUpload = async (file: UploadFileInfoCustom) => {
   }
 }
 
+const downloadLoding = ref(false)
+
 const handleDownload = () => {
+  downloadLoding.value=true
   const params = {
     file_path: `${templatePath.value}/${templateMetaData.value.id}`,
   }
@@ -398,6 +401,8 @@ const handleDownload = () => {
     link.click() //点击下载
     document.body.removeChild(link) //下载完成移除元素
     window.URL.revokeObjectURL(href) //释放blob对象
+  }).finally(() => { 
+    downloadLoding.value=false
   })
 }
 onMounted(async () => {

@@ -67,6 +67,6 @@ export const downloadFileApi = (params: { file_path: string }) => {
     {
       params,
     },
-    { returnFull: true, responseType: "blob" },
+    { returnFull: true, responseType: "blob", timeout: 60000 },
   )
 }

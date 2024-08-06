@@ -68,11 +68,7 @@
               {{ taskDetail.task_status }} => {{ taskDetail.task_rc }}
             </span>
             <span v-if="showSpin">
-              <n-button
-                type="primary"
-                size="small"
-                @click="revokeClickHandle"
-              >
+              <n-button type="primary" size="small" @click="revokeClickHandle">
                 取消
               </n-button>
             </span>
@@ -136,7 +132,7 @@
               <div class="flex h-2 flex-row justify-end">
                 <n-spin :size="20" v-show="showSpin" />
               </div>
-              <n-scrollbar style="max-height: 600px">
+              <n-scrollbar ref="scrollbarRef" style="max-height: 600px">
                 <pre
                   class="stdoutContent"
                   style="min-height: 600px"
@@ -216,8 +212,8 @@ const taskDetail = ref<TasksHistory>({})
 const backClickHandle = () => {
   router.back()
 }
-
-const selectHistoryValue = ref(0)
+const scrollbarRef = ref()
+const selectHistoryValue = ref<string>(null)
 const selectHistoryOptions = ref([])
 const handleUpdateValue = async () => {
   await refreshPage(selectHistoryValue.value)
@@ -272,8 +268,8 @@ const taskStdoutHtml = computed(() => {
   return stdoutHtml
 })
 const taskRunComplete = ref(false)
-const refreshPage = async (id: number) => {
-  await getTasksHistoryHandle(id)
+const refreshPage = async (tid: string) => {
+  await getTasksHistoryHandle(tid)
     .then(async res => {
       taskDetail.value = res
       if (!taskRunComplete.value && res.task_rc != -1) {
@@ -289,7 +285,7 @@ const refreshPage = async (id: number) => {
         timer.value = null
         showSpin.value = false
       }
-      if (!["running", "starting"].includes(res.task_status)) {
+      if (!["pending", "running", "starting"].includes(res.task_status)) {
         taskRunComplete.value = true
       }
     })
@@ -302,20 +298,23 @@ const refreshPage = async (id: number) => {
 const timer = ref(null)
 onMounted(async () => {
   taskRunComplete.value = false
+
   if (currentRoute.query.name) {
     queryTasksHistoryHandle({
       task_name: currentRoute.query.name as string,
     }).then(async res => {
       selectHistoryOptions.value = res.result
-      selectHistoryValue.value = res.result[0].id
+      selectHistoryValue.value = res.result[0].task_id
       await refreshPage(selectHistoryValue.value)
     })
   } else {
-    selectHistoryValue.value = parseInt(currentRoute.query.id as string)
+    selectHistoryValue.value = currentRoute.query.tid as string
     await refreshPage(selectHistoryValue.value)
   }
 
-  if (["running", "starting"].includes(taskDetail.value.task_status)) {
+  if (
+    ["pending", "running", "starting"].includes(taskDetail.value.task_status)
+  ) {
     timer.value = setInterval(() => {
       showSpin.value = true
       refreshPage(selectHistoryValue.value)

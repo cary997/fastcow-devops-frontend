@@ -22,11 +22,11 @@ export const renderIcon = (icon: Component, theme: Object = null) => {
 
 /**复制内容到剪切板*/
 export async function onCopy(value: string) {
-  const { isSupported, copy, text, copied } = useClipboard({
+  const { isSupported, copy } = useClipboard({
     source: value,
-    legacy: true,
+    // legacy: true,
   })
-
+  console.log(isSupported.value)
   if (!isSupported.value) {
     window.$message.warning("Browser not supported!")
   } else {

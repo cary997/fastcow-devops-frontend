@@ -228,6 +228,7 @@ export const createColumns = ({
       title: "状态",
       key: "enabled",
       align: "center",
+      width: 100,
       render(row) {
         return h("span", { class: "flex justify-center items-center" }, [
           h(NIcon, {
@@ -304,6 +305,7 @@ export const createColumns = ({
       title: "其他",
       key: "queue",
       align: "center",
+      width: 100,
       render(row) {
         return h(
           NPopover,

@@ -42,7 +42,7 @@ export type downloadResult = {
 }
 /**下载文件 */
 export async function downloadFileHandle(params: { file_path: string }) {
-  return new Promise<downloadResult>((resolve, reject) => {
+  return new Promise<downloadResult>(async(resolve, reject) => {
     downloadFileApi(params)
       .then(res => {
         const fileInfo = {

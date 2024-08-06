@@ -35,7 +35,6 @@
           </div>
         </template>
         <div class="flex flex-row space-x-4">
-
             <stat
               class="flex-1 text-primary"
               title="次数统计"
